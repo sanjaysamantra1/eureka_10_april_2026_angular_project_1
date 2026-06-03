@@ -1,0 +1,32 @@
+<p class="text-center">Lets Learn Template Form</p>
+
+<div class="col-sm-4 offset-4 border border-3 rounded-3 p-3">
+  <form #myForm="ngForm" (submit)="submitMyForm(myForm.value)">
+    <p>
+      FirstName: <input name="firstName" [(ngModel)]="user.firstName" #fname="ngModel" required minlength="5" />
+      @if(fname.hasError('required')){
+        <span class="text-danger">FirstName is required</span>
+      }
+      @if(fname.hasError('minlength')){
+        <span class="text-danger">FirstName should have minimum 5 chars</span>
+      }
+    </p>
+    <p>lastName: <input name="lastName" [(ngModel)]="user.lastName" #lname="ngModel"/> </p>
+    <p>Email: <input name="email" [(ngModel)]="user.email" #email="ngModel"/> </p>
+    <p>
+      Gender:
+      <input type="radio" name="gender" value="male" ngModel />Male
+      <input type="radio" name="gender" value="female" ngModel />FeMale
+    </p>
+    <div ngModelGroup="address">
+      <p>city: <input name="city" ngModel /> </p>
+      <p>state: <input name="state" ngModel /> </p>
+      <p>pincode: <input name="pincode" ngModel /> </p>
+    </div>
+
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit" class="mx-2">
+  </form>
+
+  <pre>{{myForm.value | json}}</pre>
+</div>

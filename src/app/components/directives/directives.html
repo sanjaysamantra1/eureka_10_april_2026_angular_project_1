@@ -1,0 +1,94 @@
+<h3 class="text-center">Lets Learn Directives</h3>
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>ngIf Before Angular 17</div>
+  <input type="number" [(ngModel)]="num" />
+  <div *ngIf="num%2 == 0">{{num}} is Even Number</div>
+  <div *ngIf="num%2 !== 0">{{num}} is Odd Number</div>
+</div>
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>ngIf After Angular 17</div>
+  @if(num%2 == 0){
+  <div>{{num}} is Even Number</div>
+  }@else{
+  <div>{{num}} is Odd Number</div>
+  }
+</div>
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>Switch Case</div>
+  @switch (num) {
+  @case (1) { <h1>Monday</h1> }
+  @case (2) { <h1>Tuesday</h1> }
+  @case (3) { <h1>Wednesday</h1> }
+  @case (4) { <h1>Thursday</h1> }
+  @case (5) { <h1>Friday</h1> }
+  @case (6) { <h1>Saturday</h1> }
+  @case (7) { <h1>Sunday</h1> }
+  @default { <h1>Not a Valid number</h1> }
+  }
+</div>
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>Car List using for</div>
+  <ul>
+    @for(car of carArr;track $index){
+    <li>{{car}}</li>
+    }@empty {
+    No Item To Display
+    }
+  </ul>
+</div>
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>Employee List::</div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>role</th>
+        <th>gender</th>
+        <th>salary</th>
+        <th>isFirst?</th>
+        <th>isLast?</th>
+        <th>isEven?</th>
+        <th>isOdd?</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of employees; track $index) {
+      <tr>
+        <td>{{emp.id}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.role}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.salary}}</td>
+        <td>{{$first}}</td>
+        <td>{{$last}}</td>
+        <td>{{$even}}</td>
+        <td>{{$odd}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>ngStyle is used to apply some style conditionally</div>
+  <input type="number" [(ngModel)]="num">
+  <p [style.color]="num % 2 == 0 ? 'blue' : 'red'"> Add color conditionally</p>
+  <p [style.fontSize.px]='num % 2 == 0 ? 24 : 36'> Add style with unit </p>
+  <p [style.background-color]="num % 2 == 0?'green':'blue' "> Add style conditionally </p>
+  <p [ngStyle]="num % 2 == 0 ? myStyle1 : myStyle2"> NgStyle for multiple values </p>
+  <p [ngStyle]="myFunction()"> NgStyle for multiple values </p>
+</div>
+
+<div class="border border-3 rounded-3 p-3 mt-2">
+  <div>ngClass is used to apply css classes conditionally/dynamically</div>
+  <button class="btn" [ngClass]="num % 2 ? 'btn-success' : 'btn-danger'">
+    Class Binding example
+  </button>
+</div>

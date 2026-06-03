@@ -1,0 +1,25 @@
+<div class="container p-2 m-2">
+  <div class="row text-center border border-2 p-2">
+    <div>This is Parent</div>
+    <div>my own data a: {{a}} <input type="number" [(ngModel)]='a'></div>
+    <div>my child data b: {{child2.b}}</div>
+    <div>my child data topicname: {{parent_topicName}}</div>
+    <div>
+      numArr:
+      @for (num of numArr; track $index) {
+        <b>{{num}} &nbsp;</b>
+      }
+      <input type="number" #myBox1 />
+      <button class="mx-1" (click)="numArr.push(+myBox1.value)">Add</button>
+    </div>
+    <div>
+      <button (click)="test()">Test</button>
+    </div>
+    <div class="col-sm-6 border border-2 p-2">
+      <app-child1-demo [a]="a" [b]="child2.b" [numArr]="numArr"></app-child1-demo>
+    </div>
+    <div class="col-sm-6 border border-2 p-2">
+      <app-child2-demo #child2 (topicEvent)="receiveData($event)"></app-child2-demo>
+    </div>
+  </div>
+</div>

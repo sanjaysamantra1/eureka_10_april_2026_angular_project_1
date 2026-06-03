@@ -1,0 +1,29 @@
+<h3 class="text-center">Signal Form</h3>
+
+<div class="col-sm-4 offset-4 border border-3 rounded-3 p-3">
+  <form>
+    <p>
+      Email:
+      <input type="email" [formField]="loginForm.email" />
+      @if (loginForm.email().dirty() && loginForm.email().invalid()) {
+        <ul>
+          @for (error of loginForm.email().errors(); track error) {
+            <li class="text-danger">{{ error.message }}</li>
+          }
+        </ul>
+      }
+    </p>
+    <p>
+      Password:
+      <input type="email" [formField]="loginForm.password" />
+    </p>
+
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit" class="mx-1">
+  </form>
+
+  <pre>
+    Email: {{loginForm.email().value()}}
+    Password: {{loginForm.password().value()}}
+  </pre>
+</div>

@@ -1,0 +1,23 @@
+<p>directive-assignment works!</p>
+
+<h1>Assignment-1 : task List</h1>
+
+<select (change)="filterTasks($event)">
+  <option>All</option>
+  <option>Completed</option>
+  <option>Pending</option>
+</select>
+
+<ul>
+  @for (task of filteredTasks; track $index) {
+    <li>
+      <input type="checkbox" [(ngModel)]="task.completed">
+      <span [style.text-decoration]="task.completed ? 'line-through' : 'none'">
+        {{task.title}} ====== {{task.completed}}
+      </span>
+    </li>
+  }
+</ul>
+<div>
+  {{completedTasksCount()}} out of {{filteredTasks.length}} tasks are completed
+</div>
